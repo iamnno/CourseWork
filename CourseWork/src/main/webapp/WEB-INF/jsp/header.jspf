@@ -1,0 +1,33 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page pageEncoding="UTF-8" %>
+<header>
+    <h1 class="project-title"><a href=".">База оголошень про оренду квартири</a></h1>
+    <div class="search">
+        <form class="search-form" action="search">
+            Діапазон цінових значень від: <input class="fi" type="number" name="pf" value="${pf}"/>
+            до: <input class="fi" type="number" name="pt" value="${pt}"/> <br/>
+            Кількість кімнат від: <input class="fi" type="number" name="rf" value="${rf}"/>
+            до: <input class="fi" type="number" name="rt" value="${rt}"/> <br/>
+            Наявність дозволу на утримання домашніх улюбленців: <input type="checkbox" name="a" value="true"/>
+            Близько метро: <input type="checkbox" name="m" value="true"/>
+            <input class="fi" type="submit" value="Пошук"/>
+        </form>
+    </div>
+    <div class="login">
+        <c:if test="${!empty user}">
+            <form class="login-form" action="logout" method="POST">
+                <c:out value="${user.name}"/><br>
+                <input class="fi" type="submit" value="Вийти" />
+            </form>
+        </c:if>
+        <c:if test="${empty user}">
+            <form class="login-form" action="login" method="POST">
+                <input class="fi" type="text" name="username" value="" placeholder="Ім'я облікового запису"/>
+                <input class="fi" type="email" name="login" value="" placeholder="email@email.com"/>
+                <input class="fi" type="password" name="password" value="" placeholder="Пароль" />
+                <input class="fi" type="submit" value="Ввійти" />
+                <input class="fi" type="submit" value="Зареєструватись" formaction="register"/>
+            </form>
+        </c:if>
+    </div>
+</header>
