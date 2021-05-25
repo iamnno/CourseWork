@@ -8,11 +8,13 @@ import com.example.CourseWork.service.FlatServiceImplements;
 import com.example.CourseWork.service.UserService;
 import com.example.CourseWork.service.UserServiceImplements;
 
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 import java.util.function.UnaryOperator;
 
-public class ApplicationContextListener implements ServletContextListener {
+@WebListener
+public class ApplicationContextListener implements ServletContextListener, HttpSessionListener, HttpSessionAttributeListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
